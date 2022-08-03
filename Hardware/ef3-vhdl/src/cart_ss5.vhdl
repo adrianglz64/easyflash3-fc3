@@ -78,7 +78,7 @@ begin
         new_bank_lo <= (others => '0');
 
         if enable = '1' then
-            new_bank_lo <= '0' & data(4) & data(2);
+            new_bank_lo <= data(5) & data(4) & data(2);
             if ctrl_kill = '0' and n_io1 = '0' and wp = '1' then
                 set_bank_lo <= '1';
             end if;
@@ -92,18 +92,18 @@ begin
     ---------------------------------------------------------------------------
     --
     ---------------------------------------------------------------------------
-    do_freezer: process(enable, button_special_fn)
+    do_freezer: process(enable, button_special_fn, ctrl_game)
     begin
         start_freezer <= '0';
-        if enable = '1' and button_special_fn = '1' then
+        if enable = '1' and button_special_fn = '1' and ctrl_game = '1' then
             start_freezer <= '1';
         end if;
     end process;
 
     ---------------------------------------------------------------------------
     --
-    -- 32K ROM, 4 * 8K Banks
-    -- 32K RAM, 4 * 8K Banks
+    -- 128K ROM, 8 * 16K Banks
+    --  32K RAM, 4 *  8K Banks
     --
     -- IO1 read:
     --     Cartridge ROM from current ROML bank
@@ -116,9 +116,10 @@ begin
     --
     -- $dexx write:
     --
-    -- Bit 4: Bank address 14 for ROM/RAM
+    -- Bit 5: Bank address 16 for ROM/RAM
+    -- Bit 4: Bank address 15 for ROM/RAM
     -- Bit 3: 1 = Kill cartridge, registers and memory inactive
-    -- Bit 2: Bank address 13 for ROM/RAM
+    -- Bit 2: Bank address 14 for ROM/RAM
     -- Bit 1: EXROM line, 1 = assert, 1 additionally selects RAM for ROML
     -- Bit 0: GAME line, 0 = assert, 1 additionally exits freeze mode
     --
@@ -226,7 +227,7 @@ begin
     --   RAM (32 ki * 8)               *************** (14..0)
     --   Flash (8 Mi * 8)         ******************** (19..0)
     -- Used in AR mode:
-    --   mem_addr(19 downto 15)   HHHL0                (19..15)
+    --   mem_addr(19 downto 15)   HHHLB                (19..15)
     --   mem_addr(14 downto 13)        BB              (14..13)
     --   mem_addr(12 downto 0)           AAAAAAAAAAAAA (12..0)
     --
