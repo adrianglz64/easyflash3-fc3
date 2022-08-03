@@ -1,4 +1,8 @@
 
+EasyFlash 3 CPLD Firmware version 1.2.2 (c) 2022 Adrian Gonzalez is
+derived from EasyFlash 3 CPLD Firmware 1.2.1 and distributed according to
+the same disclaimer and license as EasyFlash 3 CPLD Firmware 1.2.1
+
 EasyFlash 3 CPLD Firmware version 1.2.0, May 2018, through 1.2.1, May 2018, are
 Copyright (c) 2018 Kim Jorgensen, are derived from EasyFlash 3 CPLD Firmware 1.1.1,
 and are distributed according to the same disclaimer and license as
@@ -29,6 +33,12 @@ License
 
 Changes
 =======
+
+Version 1.2.2 - 03.08.2022
+
+- Enabled support for 128K SuperSnapshot V5 ROMs
+- Fixed freezer bug that caused a crash when pressing the freeze button while
+  in the Snapshot menus
 
 Version 1.2.1 - 18.05.2018
 
