@@ -1,8 +1,7 @@
 EasyFlash
 =========
 
-This is a fork of https://bitbucket.org/skoe/easyflash with the purpose of adding Final Cartridge III support to EasyFlash³.
+This is a fork of Kim Jorgensen's Final Cartridge III-enabled EasyFlash 3 core.  Support for 128KB 
+SuperSnapshot V5 ROMs has been added.  Releases include the CPLD core only.
 
-Download the software from here: https://github.com/KimJorgensen/easyflash/releases/
-
-Note: Skoe was not involved in this work, please do not expect him to support this.
+Download from https://github.com/adrianglz64/easyflash3-fc3/releases
